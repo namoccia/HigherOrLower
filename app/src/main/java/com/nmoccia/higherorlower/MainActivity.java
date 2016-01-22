@@ -18,20 +18,24 @@ public class MainActivity extends AppCompatActivity {
     int randomNumber;
 
     public void checkGuess(View view){
+        String message = "";
+
         EditText guessedNumber = (EditText) findViewById(R.id.guessedNumberField);
         String guessedNumberString = guessedNumber.getText().toString();
 
-        int guessedNumberInt = Integer.parseInt(guessedNumberString);
+        if (guessedNumberString.isEmpty()) {
+            message = "Please enter a number!";
+        } else {
+            int guessedNumberInt = Integer.parseInt(guessedNumberString);
 
-        String message = "";
-
-        if (guessedNumberInt > randomNumber) {
-            message = "Too high!";
-        } else if (guessedNumberInt < randomNumber) {
-            message = "Too low!";
-        }
-        else {
-            message = "Correct!";
+            if (guessedNumberInt > randomNumber) {
+                message = "Too high!";
+            } else if (guessedNumberInt < randomNumber) {
+                message = "Too low!";
+            }
+            else {
+                message = "Correct!";
+            }
         }
 
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
