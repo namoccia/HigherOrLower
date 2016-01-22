@@ -16,6 +16,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     int randomNumber;
+    Random randomGenerator;
 
     public void checkGuess(View view){
         String message = "";
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 message = "Too low!";
             }
             else {
-                message = "Correct!";
+                message = "Correct! Try playing again!";
+                randomNumber = randomGenerator.nextInt(21);
             }
         }
 
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Random randomGenerator = new Random();
+        randomGenerator = new Random();
         randomNumber = randomGenerator.nextInt(21);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
